@@ -19,11 +19,14 @@ helpers do
   end
 end
 
-before do
-  halt 401 if params[:secret] != settings.secret
+get "/" do
+  "<div style=\"font:24px Avenir,Helvetica;max-width:32em;margin:2em;line-height:1.3\"><h1 style=\"font-size:1.5em\">Huzzah! You’re almost there.</h1><p style=\"color:#666\">Now create a webhook in your <a href=\"https://buildkite.com/\" style=\"color:black\">Buildkite</a> notification settings with this URL, substituting the secret from your Heroku app’s config&nbsp;variables:</p><p>#{request.scheme}://#{request.host}/?secret=the-secret</p></div>"
 end
 
 post "/" do
+  halt(401, 'Looks like you forgot to add ?secret=the-secret') if params[:secret].blank?
+  halt(401, 'Secret is incorrect') if params[:secret] != settings.secret
+
   event = JSON.parse(request.body)
 
   if request.headers["X-Buildkite-Event"] == "build"
