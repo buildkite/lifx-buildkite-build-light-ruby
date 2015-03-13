@@ -1,17 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 61.6 297.6 297.6" enable-background="new 0 61.6 297.6 297.6" xml:space="preserve">
-<title>Buildkite</title>
-<desc>The Buildkite logo</desc>
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="212.5" y1="420.94" x2="212.5" y2="-4.06" gradientTransform="matrix(0.7003 0 0 -0.7003 0 356.4467)">
-	<stop  offset="0" style="stop-color:#7402FD"/>
-	<stop  offset="1" style="stop-color:#EE325B"/>
-</linearGradient>
-<path fill="url(#SVGID_1_)" d="M0,61.6h297.6v297.6H0V61.6z"/>
-<g>
-	<path opacity="0.6" fill="#FFFFFF" enable-background="new    " d="M44.5,145.3l70,34.7v70l-70-34.7V145.3z M185.1,145.3l69.5,34.7
-		l-69.5,35.3V145.3z"/>
-	<path fill="#FFFFFF" d="M185.1,145.3l-70.6,34.7v70l70.6-34.7V145.3z M254.6,180.1l-69.5,35.3v70l69.5-35.3V180.1z"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 61.6 297.6 297.6" enable-background="new 0 61.6 297.6 297.6">
+  <title>
+    Buildkite LIFX Build Light
+  </title>
+  <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="212.5" y1="420.94" x2="212.5" y2="-4.06" gradientTransform="matrix(.7 0 0 -.7 0 356.447)">
+    <stop offset="0" stop-color="#7402FD"/>
+    <stop offset="1" stop-color="#EE325B"/>
+  </linearGradient>
+  <path fill="url(#a)" d="M0 61.6h297.6v297.6H0V61.6z"/>
+  <g fill="#fff">
+    <path opacity=".6" enable-background="new" d="M44.5 145.3l70 34.7v70l-70-34.7v-70zm140.6 0l69.5 34.7-69.5 35.3v-70z"/>
+    <path d="M185.1 145.3L114.5 180v70l70.6-34.7v-70zm69.5 34.8l-69.5 35.3v70l69.5-35.3v-70z"/>
+  </g>
 </svg>
