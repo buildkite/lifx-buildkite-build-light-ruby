@@ -18,10 +18,10 @@
       "value": "all"
     },
     "PROJECT_NAME": {
-      "description": "The name of the Buildkite project whose builds you want to trigger the light"
+      "description": "The name of the Buildkite project whose builds you want to trigger the light."
     },
     "BRANCH_NAME": {
-      "description": "The name of the branch that should trigger the light",
+      "description": "The name of the branch that should trigger the light.",
       "value": "master"
     },
     "SECRET": {
