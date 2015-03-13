@@ -10,8 +10,9 @@ set :secret,            ENV['SECRET']            || raise("no SECRET set")
 
 helpers do
   def lifx_api
-    Faraday.new(url: "https://api.lifx.com/v1beta1") do |conn|
-      conn.authorization :Bearer, settings.lifx_access_token
+    Faraday.new(url: "https://api.lifx.com") do |c|
+      c.authorization :Bearer, settings.lifx_access_token
+      c.use Faraday::Response::RaiseError
     end
   end
 end
