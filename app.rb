@@ -23,11 +23,9 @@ post "/" do
   halt(401, 'Secret is incorrect') if params[:secret] != settings.secret
 
   event = JSON.parse(request.body.read)
+  puts event.inspect # helpful for inspecting incoming webhook requests
 
-  puts headers.inspect
-  puts event.inspect
-
-  if headers["X-Buildkite-Event"] == "build"
+  if request["X_BUILDKITE_EVENT"] == "build"
     case event['build']['state']
     when 'running'
       lifx_api.post "/lights/#{settings.bulb_selector}/effects/breathe.json",
