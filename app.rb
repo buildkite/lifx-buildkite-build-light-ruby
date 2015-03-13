@@ -11,9 +11,9 @@ set :lifx_api_host,     ENV['LIFX_ENDPOINT']     || 'api.lifx.com'
 
 helpers do
   def lifx_api
-    Faraday.new(url: "https://#{settings.lifx_api_host}/v1beta1") do |faraday|
+    Faraday.new(url: "https://#{settings.lifx_api_host}") do |faraday|
       faraday.authorization :Bearer, settings.lifx_access_token
-      faraday.request  :url_encoded
+      faraday.request :url_encoded
       faraday.response :logger
       faraday.adapter Faraday.default_adapter
       faraday.use Faraday::Response::RaiseError
@@ -31,7 +31,7 @@ post "/" do
   if request.env["HTTP_X_BUILDKITE_EVENT"] == "build"
     case event['build']['state']
     when 'running'
-      lifx_api.post "/lights/#{settings.bulb_selector}/effects/breathe.json",
+      lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
         power_on:   false,
         color:      "yellow brightness:5%",
         from_color: "yellow brightness:35%",
@@ -39,7 +39,7 @@ post "/" do
         cycles:     9999,
         persist:    true
     when 'passed'
-      lifx_api.post "/lights/#{settings.bulb_selector}/effects/breathe.json",
+      lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
         power_on:   false,
         color:      "green brightness:75%",
         from_color: "green brightness:10%",
@@ -48,7 +48,7 @@ post "/" do
         persist:    true,
         peak:       0.2
     when 'failed'
-      lifx_api.post "/lights/#{settings.bulb_selector}/effects/breathe.json",
+      lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
         power_on:   false,
         color:      "red brightness:60%",
         from_color: "red brightness:25%",
