@@ -1,6 +1,6 @@
 {
   "name": "LIFX Buildkite Build Light",
-  "description": "Controls LIFX globes based on Buildkite webhook events",
+  "description": "An example Buildkite webhook endpoint for creating a LIFX-powered build light",
   "keywords": [
     "ci",
     "lifx",
