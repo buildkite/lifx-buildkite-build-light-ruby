@@ -1,4 +1,4 @@
-# Lifx Buildkite Build Light (Ruby)
+# LIFX Buildkite Build Light (Ruby)
 
 An example Buildkite webhook endpoint for creating a LIFX-powered build light.
 
