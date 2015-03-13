@@ -1,8 +1,11 @@
 GEM
+  remote: https://rubygems.org/
   specs:
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     multipart-post (2.0.0)
+    puma (2.11.1)
+      rack (>= 1.1, < 2.0)
     rack (1.6.0)
     rack-protection (1.5.3)
       rack
@@ -17,4 +20,5 @@ PLATFORMS
 
 DEPENDENCIES
   faraday
+  puma
   sinatra
