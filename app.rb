@@ -11,7 +11,7 @@ set :lifx_api_host,     ENV['LIFX_ENDPOINT']     || 'api.lifx.com'
 
 helpers do
   def lifx_api
-    Faraday.new(url: "https://#{settings.lifx_api_host}") do |faraday|
+    Faraday.new(url: "https://#{settings.lifx_api_host}/v1beta1") do |faraday|
       faraday.authorization :Bearer, settings.lifx_access_token
       faraday.request  :url_encoded
       faraday.response :logger
