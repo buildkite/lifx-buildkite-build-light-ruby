@@ -25,6 +25,9 @@ post "/" do
   event = JSON.parse(request.body.read)
   puts event.inspect # helpful for inspecting incoming webhook requests
 
+  puts request.env["HTTP_X_BUILDKITE_EVENT"].inspect
+  puts event['build']['state'].inspect
+
   if request.env["HTTP_X_BUILDKITE_EVENT"] == "build"
     case event['build']['state']
     when 'running'
