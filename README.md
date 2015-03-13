@@ -18,9 +18,9 @@ An example [Buildkite](https://buildkite.com/) webhook endpoint for creating a [
 
 ## Personalising
 
-Check out [api.lifx.com](https://api.lifx.com/) to see what’s possible with the API, and then simply fork this project.
-
 One bulb per project? One bulb per build pipeline step? A LIFX chandelier that twinkles rainbows after each deploy? The possibilities are endless!
+
+Check out [api.lifx.com](https://api.lifx.com/) to see what’s possible with the API, then fork this project, and get hacking.
 
 ## License
 
