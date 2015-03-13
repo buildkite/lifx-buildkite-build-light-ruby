@@ -7,10 +7,11 @@ set :bulb_selector,     ENV['BULB_SELECTOR']     || raise("no BULB_SELECTOR set"
 set :project_name,      ENV['PROJECT_NAME']      || raise("no PROJECT_NAME set")
 set :branch_name,       ENV['BRANCH_NAME']       || raise("no BRANCH_NAME set")
 set :secret,            ENV['SECRET']            || raise("no SECRET set")
+set :lifx_api_host,     ENV['LIFX_ENDPOINT']     || 'api.lifx.com'
 
 helpers do
   def lifx_api
-    Faraday.new(url: "https://api.lifx.com") do |c|
+    Faraday.new(url: "https://#{settings.lifx_api_host}") do |c|
       c.authorization :Bearer, settings.lifx_access_token
       c.use Faraday::Response::RaiseError
     end
