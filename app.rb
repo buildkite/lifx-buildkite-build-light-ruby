@@ -24,6 +24,9 @@ post "/" do
 
   event = JSON.parse(request.body.read)
 
+  puts headers.inspect
+  puts event.inspect
+
   if headers["X-Buildkite-Event"] == "build"
     case event['build']['state']
     when 'running'
