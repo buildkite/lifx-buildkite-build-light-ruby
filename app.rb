@@ -13,6 +13,7 @@ helpers do
   def lifx_api
     Faraday.new(url: "https://#{settings.lifx_api_host}") do |faraday|
       faraday.authorization :Bearer, settings.lifx_access_token
+      faraday.request  :url_encoded
       faraday.response :logger
       faraday.adapter Faraday.default_adapter
       faraday.use Faraday::Response::RaiseError
