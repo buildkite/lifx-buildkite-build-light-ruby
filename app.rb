@@ -24,7 +24,7 @@ post "/" do
 
   event = JSON.parse(request.body.read)
 
-  if request["X-Buildkite-Event"] == "build"
+  if headers["X-Buildkite-Event"] == "build"
     case event['build']['state']
     when 'running'
       lifx_api.post "/lights/#{settings.bulb_selector}/effects/breathe.json",
