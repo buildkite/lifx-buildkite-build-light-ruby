@@ -24,5 +24,9 @@
       "description": "The name of the branch that should trigger the light",
       "value": "master"
     },
+    "SECRET": {
+      "description": "A secret password. You'll add this to the URL when you put it into your Buildkite settings to ensure no-one else can control your build light.",
+      "generator": "secret"
+    }
   }
 }

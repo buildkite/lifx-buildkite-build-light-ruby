@@ -3,9 +3,10 @@ require 'json'
 require 'faraday'
 
 set :lifx_access_token, ENV['LIFX_ACCESS_TOKEN'] || raise("no LIFX_ACCESS_TOKEN set")
-set :bulb_selector, ENV['BULB_SELECTOR'] || raise("no BULB_SELECTOR set")
-set :project_name, ENV['PROJECT_NAME'] || raise("no PROJECT_NAME set")
-set :branch_name, ENV['BRANCH_NAME'] || raise("no BRANCH_NAME set")
+set :bulb_selector,     ENV['BULB_SELECTOR']     || raise("no BULB_SELECTOR set")
+set :project_name,      ENV['PROJECT_NAME']      || raise("no PROJECT_NAME set")
+set :branch_name,       ENV['BRANCH_NAME']       || raise("no BRANCH_NAME set")
+set :secret,            ENV['SECRET']            || raise("no SECRET set")
 
 helpers do
   def lifx_api
@@ -18,7 +19,11 @@ helpers do
   end
 end
 
-post '/' do
+before do
+  halt 401 if params[:secret] != settings.secret
+end
+
+post "/" do
   event = JSON.parse(request.body)
 
   if request.headers["X-Buildkite-Event"] == "build"
@@ -49,5 +54,5 @@ post '/' do
     end
   end
 
-  status :ok
+  status 200
 end
