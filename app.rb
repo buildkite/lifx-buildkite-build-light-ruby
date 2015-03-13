@@ -24,7 +24,7 @@ get "/" do
 end
 
 post "/" do
-  halt(401, 'Looks like you forgot to add ?secret=the-secret') if params[:secret].blank?
+  halt(401, 'Looks like you forgot to add ?secret=the-secret') if params[:secret].nil?
   halt(401, 'Secret is incorrect') if params[:secret] != settings.secret
 
   event = JSON.parse(request.body)
