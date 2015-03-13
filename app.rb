@@ -27,7 +27,7 @@ post "/" do
   halt(401, 'Looks like you forgot to add ?secret=the-secret') if params[:secret].nil?
   halt(401, 'Secret is incorrect') if params[:secret] != settings.secret
 
-  event = JSON.parse(request.body)
+  event = JSON.parse(request.body.read)
 
   if request.headers["X-Buildkite-Event"] == "build"
     case event['build']['state']
