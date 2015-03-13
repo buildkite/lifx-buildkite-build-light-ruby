@@ -2,6 +2,8 @@
 
 An example [Buildkite](https://buildkite.com/) webhook endpoint for creating a [LIFX](https://lifx.com/) powered build light.
 
+:tada::v::panda_face::v::tada:
+
 ![LIFX panda build light in action](http://i.imgur.com/FrBTgnf.gif)
 
 ## Usage
@@ -12,7 +14,7 @@ An example [Buildkite](https://buildkite.com/) webhook endpoint for creating a [
 
 3. **Set up the webhook:** In Buildkite go to Settings → Notifications → Webhooks and add a new webhook for your Heroku app's URL, adding `?secret=your-secret` to the end. For example: `https://your-app-name.herokuapp.com/?secret=your-secret`
 
-4. **Trigger a build!** :tada:
+4. **Trigger a build!**
 
 ## Customising
 
