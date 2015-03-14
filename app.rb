@@ -1,13 +1,19 @@
+require 'rack/parser'
 require 'sinatra'
 require 'json'
 require 'faraday'
 
+# Required
 set :lifx_access_token, ENV['LIFX_ACCESS_TOKEN'] || raise("no LIFX_ACCESS_TOKEN set")
 set :bulb_selector,     ENV['BULB_SELECTOR']     || raise("no BULB_SELECTOR set")
 set :project_name,      ENV['PROJECT_NAME']      || raise("no PROJECT_NAME set")
 set :branch_name,       ENV['BRANCH_NAME']       || raise("no BRANCH_NAME set")
 set :secret,            ENV['SECRET']            || raise("no SECRET set")
+
+# Optional
 set :lifx_api_host,     ENV['LIFX_ENDPOINT']     || 'api.lifx.com'
+
+use Rack::Parser # loads the JSON request body into params
 
 helpers do
   def lifx_api
@@ -25,13 +31,15 @@ post "/" do
   halt(401, 'Looks like you forgot to add ?secret=the-secret') if params[:secret].nil?
   halt(401, 'Secret is incorrect') if params[:secret] != settings.secret
 
-  event = JSON.parse(request.body.read)
-  puts event.inspect # helpful for inspecting incoming webhook requests
+  puts params.inspect # helpful for inspecting incoming webhook requests
 
-  if request.env["HTTP_X_BUILDKITE_EVENT"] == "build" &&
-     event['build']['project']['name'] == settings.project_name &&
-     event['build']['branch'] == settings.branch_name
-    case event['build']['state']
+  is_matching_build_request =
+    request.env['HTTP_X_BUILDKITE_EVENT'] == 'build' &&
+      params['build']['project']['name'] == settings.project_name &&
+      params['build']['branch'] == settings.branch_name
+
+  if is_matching_build_request
+    case params['build']['state']
     when 'running'
       lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
         power_on:   false,

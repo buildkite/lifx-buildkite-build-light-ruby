@@ -7,6 +7,8 @@ GEM
     puma (2.11.1)
       rack (>= 1.1, < 2.0)
     rack (1.6.0)
+    rack-parser (0.6.1)
+      rack
     rack-protection (1.5.3)
       rack
     sinatra (1.4.5)
@@ -21,4 +23,5 @@ PLATFORMS
 DEPENDENCIES
   faraday
   puma
+  rack-parser
   sinatra
