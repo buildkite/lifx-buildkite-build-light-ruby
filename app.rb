@@ -28,7 +28,9 @@ post "/" do
   event = JSON.parse(request.body.read)
   puts event.inspect # helpful for inspecting incoming webhook requests
 
-  if request.env["HTTP_X_BUILDKITE_EVENT"] == "build"
+  if request.env["HTTP_X_BUILDKITE_EVENT"] == "build" &&
+     event['build']['project']['name'] == settings.project_name &&
+     event['build']['branch'] == settings.branch_name
     case event['build']['state']
     when 'running'
       lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
