@@ -8,10 +8,10 @@ set :lifx_access_token, ENV['LIFX_ACCESS_TOKEN'] || raise("no LIFX_ACCESS_TOKEN 
 set :bulb_selector,     ENV['BULB_SELECTOR']     || raise("no BULB_SELECTOR set")
 set :project_name,      ENV['PROJECT_NAME']      || raise("no PROJECT_NAME set")
 set :branch_name,       ENV['BRANCH_NAME']       || raise("no BRANCH_NAME set")
-set :secret,            ENV['SECRET']            || raise("no SECRET set")
+set :webhook_token,     ENV['WEBHOOK_TOKEN']     || raise("no WEBHOOK_TOKEN set")
 
 # Optional
-set :lifx_api_host,     ENV['LIFX_ENDPOINT']     || 'api.lifx.com'
+set :lifx_api_host, ENV['LIFX_ENDPOINT'] || 'api.lifx.com'
 
 use Rack::Parser # loads the JSON request body into params
 
@@ -28,8 +28,7 @@ helpers do
 end
 
 post "/" do
-  halt(401, 'Looks like you forgot to add ?secret=the-secret') if params[:secret].nil?
-  halt(401, 'Secret is incorrect') if params[:secret] != settings.secret
+  halt 401 unless request.env['HTTP_X_BUILDKITE_TOKEN'] == settings.webhook_token
 
   puts params.inspect # helpful for inspecting incoming webhook requests
 

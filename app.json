@@ -10,11 +10,8 @@
   "repository": "https://github.com/buildkite/lifx-buildkite-build-light-ruby",
   "logo": "https://dl.dropboxusercontent.com/u/376613/buildkite/buildkite-lifx-build-light-logo.svg",
   "env": {
-    "LIFX_ACCESS_TOKEN": {
-      "description": "A LIFX personal access token (create one at http://cloud.lifx.com/)"
-    },
     "BULB_SELECTOR": {
-      "description": "The selector for which bulb to turn on (see http://api.lifx.com/ for examples)",
+      "description": "A LIFX API build selector to choose which bulbs to turn on (see http://api.lifx.com/ for examples)",
       "value": "all"
     },
     "PROJECT_NAME": {
@@ -24,8 +21,11 @@
       "description": "The name of the branch that should trigger the light.",
       "value": "master"
     },
-    "SECRET": {
-      "description": "A secret password. You'll add this to the URL when you put it into your Buildkite settings to ensure no-one else can control your build light.",
+    "LIFX_ACCESS_TOKEN": {
+      "description": "A LIFX personal access token (create one at http://cloud.lifx.com/)"
+    },
+    "WEBHOOK_TOKEN": {
+      "description": "The Buildkite webhook token. Let Heroku generate this for you, copy it from the Heroku app’s config variables, and then paste it into Buildkite when you setup the webhook.",
       "generator": "secret"
     }
   }
