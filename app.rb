@@ -34,7 +34,7 @@ post "/" do
 
   is_matching_build_request =
     request.env['HTTP_X_BUILDKITE_EVENT'] == 'build' &&
-      params['build']['project']['name'] == settings.project_name &&
+      params['project']['name'] == settings.project_name &&
       params['build']['branch'] == settings.branch_name
 
   if is_matching_build_request
