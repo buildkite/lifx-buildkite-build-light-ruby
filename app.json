@@ -1,6 +1,6 @@
 {
   "name": "LIFX Buildkite Build Light",
-  "description": "An example Buildkite webhook endpoint for creating a LIFX-powered build light",
+  "description": "An example Ruby Buildkite webhook endpoint for creating a LIFX-powered build light",
   "keywords": [
     "ci",
     "lifx",

@@ -1,6 +1,6 @@
 # LIFX Buildkite Build Light (Ruby)
 
-An example [Buildkite](https://buildkite.com/) webhook endpoint for creating a [LIFX](https://lifx.com/) powered build light.
+An example Ruby [Buildkite](https://buildkite.com/) webhook endpoint for creating a [LIFX](https://lifx.com/) powered build light.
 
 :v::panda_face::v:
 
