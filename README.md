@@ -20,7 +20,7 @@ An example Ruby [Buildkite](https://buildkite.com/) webhook endpoint for creatin
 
 One bulb per project? One bulb per build pipeline step? A LIFX chandelier that twinkles rainbows after each deploy? The possibilities are endless!
 
-Check out [api.lifx.com](https://api.lifx.com/) to see what’s possible with the API, then fork this project, and get hacking.
+Check out [developer.lifx.com](https://developer.lifx.com/) to see what’s possible with the API, then fork this project, and get hacking.
 
 ## License
 
