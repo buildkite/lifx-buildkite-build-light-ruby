@@ -6,8 +6,6 @@ require 'faraday'
 # Required
 set :lifx_access_token, ENV['LIFX_ACCESS_TOKEN'] || raise("no LIFX_ACCESS_TOKEN set")
 set :bulb_selector,     ENV['BULB_SELECTOR']     || raise("no BULB_SELECTOR set")
-set :project_name,      ENV['PROJECT_NAME']      || raise("no PROJECT_NAME set")
-set :branch_name,       ENV['BRANCH_NAME']       || raise("no BRANCH_NAME set")
 set :webhook_token,     ENV['WEBHOOK_TOKEN']     || raise("no WEBHOOK_TOKEN set")
 
 # Optional
@@ -32,12 +30,7 @@ post "/" do
 
   puts params.inspect # helpful for inspecting incoming webhook requests
 
-  is_matching_build_request =
-    request.env['HTTP_X_BUILDKITE_EVENT'] == 'build' &&
-      params['project']['name'] == settings.project_name &&
-      params['build']['branch'] == settings.branch_name
-
-  if is_matching_build_request
+  if request.env['HTTP_X_BUILDKITE_EVENT'] == 'build'
     case params['build']['state']
     when 'running'
       lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",

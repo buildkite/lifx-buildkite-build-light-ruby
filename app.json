@@ -11,15 +11,8 @@
   "logo": "https://dl.dropboxusercontent.com/u/376613/buildkite/buildkite-lifx-build-light-logo.svg",
   "env": {
     "BULB_SELECTOR": {
-      "description": "A LIFX API build selector to choose which bulbs to turn on (see http://api.lifx.com/ for examples)",
+      "description": "A LIFX API build selector to choose which bulbs to turn on (see http://developer.lifx.com/#selectors for examples)",
       "value": "all"
-    },
-    "PROJECT_NAME": {
-      "description": "The name of the Buildkite project whose builds you want to trigger the light."
-    },
-    "BRANCH_NAME": {
-      "description": "The name of the branch that should trigger the light.",
-      "value": "master"
     },
     "LIFX_ACCESS_TOKEN": {
       "description": "A LIFX personal access token (create one at http://cloud.lifx.com/)"
