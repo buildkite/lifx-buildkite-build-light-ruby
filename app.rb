@@ -30,17 +30,20 @@ post "/" do
 
   puts params.inspect # helpful for inspecting incoming webhook requests
 
-  if request.env['HTTP_X_BUILDKITE_EVENT'] == 'build'
-    case params['build']['state']
-    when 'running'
-      lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
-        power_on:   false,
-        color:      "yellow brightness:5%",
-        from_color: "yellow brightness:35%",
-        period:     5,
-        cycles:     9999,
-        persist:    true
-    when 'passed'
+  buildkite_event = request.env['HTTP_X_BUILDKITE_EVENT']
+
+  if buildkite_event == 'build.running'
+    lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
+      power_on:   false,
+      color:      "yellow brightness:5%",
+      from_color: "yellow brightness:35%",
+      period:     5,
+      cycles:     9999,
+      persist:    true
+  end
+
+  if buildkite_event == 'build.finished'
+    if params['build']['state'] == 'passed'
       lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
         power_on:   false,
         color:      "green brightness:75%",
@@ -49,7 +52,7 @@ post "/" do
         cycles:     3,
         persist:    true,
         peak:       0.2
-    when 'failed'
+    else
       lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
         power_on:   false,
         color:      "red brightness:60%",

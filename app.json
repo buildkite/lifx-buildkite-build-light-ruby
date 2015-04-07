@@ -4,7 +4,9 @@
   "keywords": [
     "ci",
     "lifx",
-    "buildkite"
+    "buildkite",
+    "ruby",
+    "webhooks"
   ],
   "website": "https://buildkite.com/",
   "repository": "https://github.com/buildkite/lifx-buildkite-build-light-ruby",
