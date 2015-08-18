@@ -13,7 +13,7 @@
   "logo": "https://dl.dropboxusercontent.com/u/376613/buildkite/buildkite-lifx-build-light-logo.svg",
   "env": {
     "BULB_SELECTOR": {
-      "description": "A LIFX API build selector to choose which bulbs to turn on (see http://developer.lifx.com/#selectors for examples)",
+      "description": "A LIFX API bulb selector to choose which bulbs to turn on (see http://api.developer.lifx.com/docs/selectors for examples)",
       "value": "all"
     },
     "LIFX_ACCESS_TOKEN": {
