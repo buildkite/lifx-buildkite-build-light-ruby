@@ -33,7 +33,7 @@ post "/" do
   buildkite_event = request.env['HTTP_X_BUILDKITE_EVENT']
 
   if buildkite_event == 'build.running'
-    lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
+    lifx_api.post "/v1/lights/#{settings.bulb_selector}/effects/breathe.json",
       power_on:   false,
       color:      "yellow brightness:5%",
       from_color: "yellow brightness:35%",
@@ -44,7 +44,7 @@ post "/" do
 
   if buildkite_event == 'build.finished'
     if params['build']['state'] == 'passed'
-      lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
+      lifx_api.post "/v1/lights/#{settings.bulb_selector}/effects/breathe.json",
         power_on:   false,
         color:      "green brightness:75%",
         from_color: "green brightness:10%",
@@ -53,7 +53,7 @@ post "/" do
         persist:    true,
         peak:       0.2
     else
-      lifx_api.post "/v1beta1/lights/#{settings.bulb_selector}/effects/breathe.json",
+      lifx_api.post "/v1/lights/#{settings.bulb_selector}/effects/breathe.json",
         power_on:   false,
         color:      "red brightness:60%",
         from_color: "red brightness:25%",
