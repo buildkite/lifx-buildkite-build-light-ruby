@@ -5,7 +5,9 @@ GEM
       multipart-post (>= 1.2, < 3)
     multipart-post (2.0.0)
     mustermann (1.0.3)
-    puma (3.12.2)
+    nio4r (2.5.8)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-parser (0.7.0)
       rack
